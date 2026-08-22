@@ -1,0 +1,123 @@
+html.ilv-no-scroll {
+  overflow: hidden !important;
+}
+
+.ilv-root {
+  all: initial;
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.ilv-root.ilv-native {
+  position: fixed;
+  inset: 0;
+}
+
+.ilv-root .ilv-viewport {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--ilv-bg, #0b0b0f);
+  cursor: zoom-out;
+  display: block;
+}
+
+.ilv-root.ilv-overlay .ilv-viewport {
+  background: color-mix(in srgb, var(--ilv-bg, #0b0b0f) 88%, transparent);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+
+.ilv-root .ilv-viewport.ilv-dragging {
+  cursor: grabbing;
+}
+
+.ilv-root .ilv-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center center;
+  will-change: transform;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.ilv-root .ilv-img {
+  display: block;
+  max-width: none;
+  pointer-events: none;
+  position: relative;
+}
+
+.ilv-hidden {
+  display: none !important;
+}
+
+.ilv-root .ilv-toolbar {
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  padding: 8px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+
+.ilv-root .ilv-btn {
+  all: unset;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  color: #fff;
+  font-size: 17px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.ilv-root .ilv-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.ilv-root .ilv-btn:active {
+  transform: scale(0.92);
+}
+
+.ilv-root .ilv-close {
+  all: unset;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.ilv-root .ilv-close:hover {
+  background: rgba(255, 80, 80, 0.35);
+}
+
+.ilv-root .ilv-close:active {
+  transform: scale(0.9);
+}
