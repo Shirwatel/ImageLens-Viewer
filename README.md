@@ -1,6 +1,7 @@
 # ImageLens Viewer
-
-*Updated to match the current build (flip + save + right-click "Open in ImageLens Viewer", no pixelate) and Google's Chrome Web Store developer policy updates that took effect August 1, 2026.*
+happy about the extension? a donation would greatly help me financially
+paypal: shirwatels@gmail.com
+ko-fi: https://ko-fi.com/messid
 
 ## Extension Title
 ImageLens Viewer
@@ -13,6 +14,51 @@ Productivity
 
 ## Language
 English
+
+---
+## Installation
+Installing ImageLens Viewer — Beginner's Guide
+
+This guide walks you through installing ImageLens Viewer from the zip file, step by step. No coding experience needed — just about 3 minutes.
+
+Step 1: Unzip the file
+Find imagelens-extension.zip wherever you downloaded it (usually your Downloads folder).
+Windows: Right-click the file → Extract All → choose a folder you'll remember (e.g., Desktop) → Extract. Mac: Double-click the zip file — it will automatically create a folder next to it.
+You should now have a regular folder (not a zip) containing files like manifest.json and folders named content, options, popup, icons, and background.
+
+Keep this folder where it is permanently. Chrome loads the extension directly from this folder — if you delete or move it later, the extension will stop working until you re-load it.
+
+Step 2: Open Chrome's extensions page
+Open Google Chrome.
+Click the three dots (⋮) in the top-right corner → Extensions → Manage Extensions. — or — Type this directly into the address bar and press Enter:
+   chrome://extensions
+Step 3: Turn on Developer mode
+
+On the Extensions page, look at the top-right corner for a toggle labeled Developer mode. Click it to turn it on (it should turn blue).
+
+This unlocks a few extra buttons at the top of the page, including Load unpacked.
+
+Step 4: Load the extension
+Click the Load unpacked button that just appeared.
+A file picker will open. Navigate to the folder you unzipped in Step 1.
+Select the folder itself (the one containing manifest.json) and click Select Folder (Windows) or Open (Mac).
+
+ImageLens Viewer should now appear as a card on the Extensions page, with its teal-and-indigo icon.
+
+Step 5: Pin it to your toolbar (optional but recommended)
+Click the puzzle piece icon (🧩) near the top-right of Chrome, next to the address bar.
+Find ImageLens Viewer in the list.
+Click the pin icon next to it.
+
+The ImageLens icon will now always be visible in your toolbar, so you can quickly open its settings.
+
+You're done! Here's how to use it
+
+Try it right away:
+
+Right-click any image on a webpage and choose "Open in ImageLens Viewer" from the menu.
+Or hold Alt and click any image directly.
+Or navigate straight to an image link (like a .jpg or .png URL) — it upgrades automatically.
 
 ---
 
@@ -134,9 +180,3 @@ If this policy changes in a way that affects what data is collected or how it's 
 
 **Contact**
 Questions about this policy can be sent to: shirwatels@gmail.com
-
----
-
-happy about the extension? a donation would greatly help me financially
-paypal: shirwatels@gmail.com
-ko-fi: https://ko-fi.com/messid
