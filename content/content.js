@@ -15,7 +15,8 @@
     ],
     siteOverrides: {}, // hostname -> boolean, lets plain click work without Alt
     uiVisibility: "auto", // 'auto' (hide until you move the mouse) | 'always'
-    constrainToWindow: true // keep the image from being panned/zoomed off-screen
+    constrainToWindow: true, // keep the image from being panned/zoomed off-screen
+    constrainDragToWindow: false // also clamp dragging/panning to the window bounds
   };
 
   let settings = { ...DEFAULTS };
@@ -236,19 +237,38 @@
     }
 
     _applyTransform() {
-      if (settings.constrainToWindow) this._constrain();
+      if (!this.fitScale) {
+        // not loaded yet — nothing to constrain
+      } else {
+        if (settings.constrainToWindow && this.scale < this.fitScale) {
+          this.scale = this.fitScale;
+        }
+        if (settings.constrainDragToWindow) this._clampPosition();
+      }
       const sx = (this.flipX ? -1 : 1) * this.scale;
       const sy = (this.flipY ? -1 : 1) * this.scale;
       const t = `translate(-50%, -50%) translate(${this.tx}px, ${this.ty}px) rotate(${this.rotation}deg) scale(${sx}, ${sy})`;
       this.wrap.style.transform = t;
     }
 
-    _constrain() {
-      // Only prevents zooming out past "fit" — panning is otherwise completely
-      // free, on purpose: dragging the image never gets stopped or bounced
-      // back at any edge, no matter how far you drag or how zoomed in you are.
-      if (!this.fitScale) return; // not loaded yet
-      if (this.scale < this.fitScale) this.scale = this.fitScale;
+    _clampPosition() {
+      // The image's own edge acts as a wall against the window's edge:
+      // - If the image is bigger than the window, you can't drag far enough
+      //   to reveal a gap past its edge.
+      // - If the image is smaller than the window, you can slide it around,
+      //   but it stops the moment its edge reaches the window's edge.
+      const vw = this.viewport.clientWidth || window.innerWidth;
+      const vh = this.viewport.clientHeight || window.innerHeight;
+      const iw = this.img.naturalWidth * this.scale;
+      const ih = this.img.naturalHeight * this.scale;
+      const rad = (this.rotation * Math.PI) / 180;
+      const bw = Math.abs(iw * Math.cos(rad)) + Math.abs(ih * Math.sin(rad));
+      const bh = Math.abs(iw * Math.sin(rad)) + Math.abs(ih * Math.cos(rad));
+
+      const maxTx = Math.abs(bw - vw) / 2;
+      const maxTy = Math.abs(bh - vh) / 2;
+      this.tx = Math.min(Math.max(this.tx, -maxTx), maxTx);
+      this.ty = Math.min(Math.max(this.ty, -maxTy), maxTy);
     }
 
     _onWheel(e) {

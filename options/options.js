@@ -12,7 +12,8 @@ const DEFAULTS = {
   siteOverrides: {},
   theme: "system",
   uiVisibility: "auto",
-  constrainToWindow: true
+  constrainToWindow: true,
+  constrainDragToWindow: false
 };
 
 const app = document.querySelector(".glass-app");
@@ -97,6 +98,7 @@ async function init() {
   document.getElementById("hideScrollbars").checked = settings.hideScrollbars;
   document.getElementById("uiAutoHide").checked = settings.uiVisibility === "auto";
   document.getElementById("constrainToWindow").checked = settings.constrainToWindow;
+  document.getElementById("constrainDragToWindow").checked = settings.constrainDragToWindow;
   document.getElementById("enhanceNative").checked = settings.enhanceNativeImagePages;
   document.getElementById("clickToView").checked = settings.clickToView;
   renderHostList();
@@ -132,6 +134,10 @@ document.getElementById("uiAutoHide").addEventListener("change", (e) => {
 
 document.getElementById("constrainToWindow").addEventListener("change", (e) => {
   persist({ constrainToWindow: e.target.checked });
+});
+
+document.getElementById("constrainDragToWindow").addEventListener("change", (e) => {
+  persist({ constrainDragToWindow: e.target.checked });
 });
 
 document.getElementById("enhanceNative").addEventListener("change", (e) => {

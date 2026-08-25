@@ -56,7 +56,8 @@ chrome.runtime.onInstalled.addListener((details) => {
           siteOverrides: {},
           theme: "system",
           uiVisibility: "auto",
-          constrainToWindow: true
+          constrainToWindow: true,
+          constrainDragToWindow: false
         });
       }
     });
