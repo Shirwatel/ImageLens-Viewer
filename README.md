@@ -1,6 +1,6 @@
 # ImageLens Viewer
 happy about the extension? a donation would greatly help me financially
-paypal: shirwatels@gmail.com
+paypal: paypal.me/shirwatel
 
 ## Extension Title
 ImageLens Viewer
