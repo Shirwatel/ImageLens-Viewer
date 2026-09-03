@@ -1,3 +1,5 @@
+like the tool? consider a tip plz? https://www.paypal.me/shirwatel
+
 # Changelog
 
 All notable changes to ImageLens Viewer are documented here.
