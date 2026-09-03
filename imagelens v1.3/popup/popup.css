@@ -1,0 +1,202 @@
+:root {
+  --teal: #22d3bd;
+  --indigo: #4f46e5;
+  --amber: #ffd666;
+
+  --bg-light-1: #eef2fb;
+  --bg-light-2: #e6e9fb;
+  --bg-dark-1: #0b0b14;
+  --bg-dark-2: #15132b;
+
+  --text-light: #14121f;
+  --text-dark: #f4f2ff;
+
+  --glass-fill-light: rgba(255, 255, 255, 0.55);
+  --glass-border-light: rgba(255, 255, 255, 0.7);
+  --glass-fill-dark: rgba(255, 255, 255, 0.06);
+  --glass-border-dark: rgba(255, 255, 255, 0.14);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  width: 320px;
+  font-family: ui-rounded, "SF Pro Rounded", "Segoe UI Rounded", system-ui, -apple-system, sans-serif;
+}
+
+.glass-app {
+  position: relative;
+  padding: 16px;
+  color: var(--text-dark);
+  overflow: hidden;
+}
+
+.glass-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(120% 100% at 15% 0%, var(--bg-dark-2), var(--bg-dark-1) 70%);
+}
+
+.glass-app[data-theme="light"] { color: var(--text-light); }
+.glass-app[data-theme="light"] .glass-bg {
+  background: radial-gradient(120% 100% at 15% 0%, var(--bg-light-2), var(--bg-light-1) 70%);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+}
+
+.title-block { flex: 1; min-width: 0; }
+.title-block h1 {
+  font-size: 15px;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.subtitle {
+  margin: 1px 0 0;
+  font-size: 11.5px;
+  opacity: 0.6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.icon-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border-dark);
+  background: var(--glass-fill-dark);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: inherit;
+  flex-shrink: 0;
+}
+.glass-app[data-theme="light"] .icon-btn {
+  border-color: var(--glass-border-light);
+  background: var(--glass-fill-light);
+}
+.icon-btn svg { fill: currentColor; }
+
+.glass-card {
+  border-radius: 18px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  background: linear-gradient(155deg, rgba(34,211,189,0.10), rgba(79,70,229,0.10)), var(--glass-fill-dark);
+  border: 1px solid var(--glass-border-dark);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+.glass-app[data-theme="light"] .glass-card {
+  background: linear-gradient(155deg, rgba(34,211,189,0.14), rgba(79,70,229,0.10)), var(--glass-fill-light);
+  border-color: var(--glass-border-light);
+  box-shadow: 0 6px 20px rgba(80,80,140,0.12), inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.row-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+.row-title {
+  font-size: 13px;
+  font-weight: 600;
+}
+.row-desc {
+  font-size: 11px;
+  opacity: 0.6;
+  margin-top: 2px;
+  line-height: 1.35;
+}
+
+.divider {
+  height: 1px;
+  margin: 10px 0;
+  background: linear-gradient(90deg, transparent, currentColor, transparent);
+  opacity: 0.1;
+}
+
+.switch {
+  position: relative;
+  width: 40px;
+  height: 24px;
+  flex-shrink: 0;
+}
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: rgba(127,127,140,0.35);
+  transition: background 0.2s ease;
+  cursor: pointer;
+}
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 3px;
+  top: 3px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  transition: transform 0.2s ease;
+}
+.switch input:checked + .slider {
+  background: linear-gradient(120deg, var(--teal), var(--indigo));
+}
+.switch input:checked + .slider::before {
+  transform: translateX(16px);
+}
+
+.cheatsheet .grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 10px;
+  font-size: 11.5px;
+}
+.cheatsheet .grid span:nth-child(odd) {
+  font-weight: 600;
+  opacity: 0.85;
+}
+.cheatsheet .grid span:nth-child(even) {
+  opacity: 0.55;
+}
+
+.text-btn {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--teal);
+  font-weight: 600;
+  font-size: 12.5px;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.text-btn:hover {
+  background: rgba(34,211,189,0.12);
+}
